@@ -19,6 +19,9 @@ Ubicarse en el directorio donde se desea descargar el proyecto y ejecutar:
 -- cd frontend-prueba
 ###Instalar dependencias:
 -- npm install
+###Configurar puerto en los siguientes componentes:
+-- users.service.ts --> [UsersService] (https://localhost:XXXX/api/usuario)
+-- auth.service.ts --> [AuthService] (https://localhost:XXXX/api/auth)
 ###Ejecución:
 -- ng serve
 
