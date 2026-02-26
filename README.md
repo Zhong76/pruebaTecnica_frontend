@@ -5,10 +5,10 @@
 - npm
 
 ## Versiones utilizadas
-Angular CLI       : 21.1.5
-Angular           : 21.1.5
-Node.js           : 24.13.0
-Package Manager   : npm 11.6.2
+-  Angular CLI       : 21.1.5
+- Angular           : 21.1.5
+- Node.js           : 24.13.0
+- Package Manager   : npm 11.6.2
 
 ## Instalación:
 Ubicarse en el directorio donde se desea descargar el proyecto y ejecutar:
