@@ -1,0 +1,48 @@
+<form [formGroup]="form" class="p-fluid">
+    <div class="w-full flex gap-3 justify-content-center pt-3">
+        <div class="w-6">
+            <p-floatlabel variant="on">
+                <input pInputText class="w-full" id="username" formControlName="username" />
+                <label for="username">Usuario</label>
+            </p-floatlabel>
+            <small class="text-red-500" *ngIf="form.get('username')?.touched && form.get('username')?.invalid">
+                Este campo es obligatorio.
+            </small>
+        </div>
+
+        <div class="w-6">
+            <p-floatlabel variant="on">
+                <input pInputText class="w-full" id="email" formControlName="email" />
+                <label for="email">Correo</label>
+            </p-floatlabel>
+            <small class="text-red-500" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">
+                Correo inválido.
+            </small>
+        </div>
+    </div>
+    <div class="w-full flex gap-3 justify-content-center pt-3">
+        <div class="w-6">
+            <p-floatlabel variant="on">
+                <p-password inputId="password" styleClass="w-full" inputStyleClass="w-full" formControlName="password"
+                    [toggleMask]="true" [feedback]="false">
+                </p-password>
+                <label for="password" class="font-medium text-900">Contraseña</label>
+            </p-floatlabel>
+        </div>
+        <div class="w-6">
+            <div class="flex h-full align-items-center justify-content-center gap-3">
+                <p-checkbox inputId="estado" [binary]="true" formControlName="estado" />
+                <label for="estado" class="ml-2"> Estado </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-content-end gap-2 mt-4">
+        <p-button label="Cancelar" icon="pi pi-times" severity="secondary" text (onClick)="cancel.emit()">
+        </p-button>
+
+        <p-button [label]="mode === 'create' ? 'Guardar' : 'Actualizar'" severity="info" icon="pi pi-save"
+            (onClick)="saveData()">
+        </p-button>
+    </div>
+</form>

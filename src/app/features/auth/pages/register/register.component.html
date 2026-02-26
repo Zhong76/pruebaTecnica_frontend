@@ -1,0 +1,87 @@
+<div class="min-h-screen flex align-items-center justify-content-center p-3 md:p-6 surface-0 relative overflow-hidden">
+    <p-toast key="rg"/>
+    <div class="absolute top-0 left-0 w-full h-full" style="background:
+      radial-gradient(1000px circle at 10% 10%, rgba(99,102,241,.18), transparent 45%),
+      radial-gradient(800px circle at 90% 20%, rgba(16,185,129,.18), transparent 50%),
+      linear-gradient(180deg, rgba(15,23,42,.06), transparent);">
+    </div>
+
+    <p-card styleClass="w-full md:w-30rem shadow-4 border-round-2xl relative">
+        <ng-template pTemplate="header">
+            <div class="flex flex-column align-items-center p-4 pb-2">
+                <div class="flex align-items-center justify-content-center border-circle mb-3 shadow-3" style="width:80px; height:80px; 
+                background: linear-gradient(135deg, #6366F1, #10B981);">
+                    <i class="pi pi-user text-3xl text-white"></i>
+                </div>
+                <div class="text-900 text-2xl font-bold">{{ title }}</div>
+            </div>
+        </ng-template>
+        <form [formGroup]="form" class="flex flex-column gap-3 p-4 pt-2">
+            <div class="flex flex-column gap-2">
+                <p-floatlabel variant="on">
+                    <input pInputText id="username" class="w-full" formControlName="username" />
+                    <label for="username" class="font-medium text-900">Usuario</label>
+                </p-floatlabel>
+                <small class="text-red-500" *ngIf="form.controls.username.touched && form.controls.username.invalid">
+                    Este campo es obligatorio.
+                </small>
+            </div>
+            <div class="flex flex-column gap-2" *ngIf="!visibleinput">
+                <p-floatlabel variant="on">
+                    <input pInputText id="email" class="w-full" formControlName="email" />
+                    <label for="email" class="font-medium text-900">Correo Electrónico</label>
+                </p-floatlabel>
+                <small class="text-red-500" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+                    Este campo es obligatorio.
+                </small>
+            </div>
+            <div class="flex flex-column gap-2">
+                <p-floatlabel variant="on">
+                    <p-password inputId="password" styleClass="w-full" inputStyleClass="w-full"
+                        formControlName="password" [toggleMask]="true" [feedback]="false">
+                    </p-password>
+                    <label for="password" class="font-medium text-900">Contraseña</label>
+                </p-floatlabel>
+                <small class="text-red-500"
+                    *ngIf="form.controls.password.touched && form.controls.password.errors?.['required']">
+                    Este campo es obligatorio.
+                </small>
+                <small class="text-red-500" *ngIf="form.controls.password.touched && !form.controls.password.errors?.['required'] && form.controls.password.errors?.['minlength']">
+                    La contraseña debe tener al menos 4 carácteres.
+                </small>
+            </div>
+            <div class="flex flex-column gap-2" *ngIf="visibleinput">
+                <p-floatlabel variant="on">
+                    <p-password inputId="newpassword" styleClass="w-full" inputStyleClass="w-full"
+                        formControlName="newpassword" [toggleMask]="true" [feedback]="false">
+                    </p-password>
+                    <label for="newpassword" class="font-medium text-900">Nueva Contraseña</label>
+                </p-floatlabel>
+                <small class="text-red-500"
+                    *ngIf="form.controls.newpassword.touched && form.controls.newpassword.errors?.['required']">
+                    Este campo es obligatorio.
+                </small>
+                <small class="text-red-500" *ngIf="form.controls.newpassword.touched && !form.controls.newpassword.errors?.['required'] && form.controls.newpassword.errors?.['minlength']">
+                    La contraseña debe tener al menos 4 carácteres.
+                </small>
+            </div>
+            <div class="flex flex-column gap-2">
+                <p-floatlabel variant="on">
+                    <p-password inputId="confirmPassword" styleClass="w-full" inputStyleClass="w-full"
+                        formControlName="confirmPassword" [toggleMask]="true" [feedback]="false">
+                    </p-password>
+                    <label for="confirmPassword" class="font-medium text-900">{{inputconfirm}}</label>
+                </p-floatlabel>
+                <small class="text-red-500"
+                    *ngIf="form.controls.confirmPassword.touched && form.controls.confirmPassword.errors?.['required']">
+                    Este campo es obligatorio.
+                </small>
+                <small class="text-red-500" *ngIf="form.controls.confirmPassword.touched && !form.controls.confirmPassword.errors?.['required'] && form.controls.confirmPassword.errors?.['minlength']">
+                    La contraseña debe tener al menos 4 carácteres.
+                </small>
+            </div>
+            <p-button [label]="labelbtn" icon="pi pi-save" styleClass="w-full" severity="info" (onClick)="register()" />
+            <p-button label="Regresar" icon="pi pi-sign-out" styleClass="w-full" severity="info" (onClick)="cancel()" />
+        </form>
+    </p-card>
+</div>

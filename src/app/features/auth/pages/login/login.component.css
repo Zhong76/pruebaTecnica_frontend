@@ -1,0 +1,7 @@
+::ng-deep .p-inputtext {
+    width: 100%;
+}
+::ng-deep .p-card-title {
+    display: flex;
+    justify-content: center;
+}
